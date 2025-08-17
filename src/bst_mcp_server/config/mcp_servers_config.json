@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "bst_pm_info": {
+      "name": "bst_pm_info",
+      "type": "streamableHttp",
+      "description": "",
+      "isActive": true,
+      "baseUrl": "http://localhost:8003/mcp"
+    }
+  }
+}

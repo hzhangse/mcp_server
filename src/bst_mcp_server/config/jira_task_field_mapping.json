@@ -1,0 +1,73 @@
+{
+    "plan_start": {
+        "type": "custom",
+        "display": "计划开始日期"
+    },
+    "plan_end": {
+        "type": "custom",
+        "display": "计划完成日期"
+    },
+    "actual_start": {
+        "type": "custom",
+        "display": "实际开始日期"
+    },
+    "actual_end": {
+        "type": "custom",
+        "display": "实际完成日期"
+    },
+    "task_owner": {
+        "type": "custom",
+        "display": "责任人",
+        "path": "name"
+    },
+    "summary": {
+        "type": "system",
+        "path": "summary",
+        "display": "任务描述"
+    },
+    "assignee": {
+        "type": "system",
+        "path": "assignee.name",
+        "display": "任务执行人"
+    },
+    "reporter": {
+        "type": "system",
+        "path": "reporter.name",
+        "display": "任务报告人"
+    },
+    "issuetype": {
+        "type": "system",
+        "path": "issuetype.name",
+        "display": "issue类型"
+    },
+    "priority": {
+        "type": "system",
+        "path": "priority.name",
+        "display": "任务优先级"
+    },
+    "aggregatetimeoriginalestimate": {
+        "type": "system",
+        "path": "aggregatetimeoriginalestimate",
+        "display": "任务预计时间"
+    },
+    "isSubtask": {
+        "type": "system",
+        "path": "issuetype.subtask",
+        "display": "是否子任务"
+    },
+    "parent": {
+        "type": "system",
+        "path": "parent.key",
+        "display": "父任务"
+    },
+    "status": {
+        "type": "system",
+        "path": "status.name",
+        "display": "任务状态"
+    },
+    "subtasks": {
+        "type": "system",
+        "path": "subtasks.key",
+        "display": "子任务"
+    }
+}

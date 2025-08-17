@@ -1,0 +1,100 @@
+<!-- template.html -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>甘特图</title>
+  <script src="assets/echarts.min.js"></script>
+  <style>
+    #chart {
+      width: 100vw;
+      height: 95vh;
+      border: 2px solid rgb(59, 57, 57);
+    }
+  </style>
+</head>
+<body>
+  <div id="chart"></div>
+  <script>
+    const chart = echarts.init(document.getElementById('chart'));
+
+    fetch('data/tasks.json')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log("📊 加载的任务数据:", data);
+
+        const option = makeOption(data);
+        chart.setOption(option);
+      })
+      .catch(err => {
+        console.error("❌ 加载任务失败:", err);
+        document.getElementById('chart').innerHTML = "⚠️ 数据加载失败，请查看控制台";
+      });
+
+    function makeOption(data) {
+      return {
+        tooltip: {
+          trigger: 'item',
+          formatter: function (params) {
+            return params.name + '<br/>' +
+              '开始: ' + echarts.format.formatTime('yyyy-MM-dd', params.value[1]) + '<br/>' +
+              '结束: ' + echarts.format.formatTime('yyyy-MM-dd', params.value[2]);
+          }
+        },
+        xAxis: {
+          type: 'time',
+          name: '时间',
+          axisLabel: {
+            formatter: '{yyyy}/{MM}/{dd}'
+          }
+        },
+        yAxis: {
+          type: 'category',
+          data: data.map(function(item, idx) { return item.name; }),
+          inverse: true
+        },
+        series: [{
+          type: 'custom',
+          renderItem: function (params, api) {
+            const categoryIndex = api.value(0);
+            const start = api.coord([api.value(1), categoryIndex]);
+            const end = api.coord([api.value(2), categoryIndex]);
+            const height = api.size([0, 1])[1] * 0.6;
+
+            return {
+              type: 'rect',
+              shape: {
+                x: start[0],
+                y: start[1] - height,
+                width: end[0] - start[0],
+                height: height
+              },
+              key: 'rect-' + params.dataIndex,
+              style: {
+                fill: '#96c3eb'
+              }
+            };
+          },
+          dimensions: [
+            { name: 'category', type: 'ordinal' },
+            { name: 'start', type: 'time' },
+            { name: 'end', type: 'time' }
+          ],
+          encode: {
+            x: [1, 2],
+            y: 0
+          },
+          data: data.map(function(item, idx) {
+            return [idx, item.start, item.end];
+          })
+        }]
+      };
+    }
+  </script>
+</body>
+</html>

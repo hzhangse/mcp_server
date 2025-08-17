@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bst_mcp_server"
+version = "0.1.0"
+description = "A mcp server tools"
+readme = "README.md"
+license = { text = "MIT License" }
+authors = [{ name = "hong.zhang", email = "hong.zhang@bst.ai" }]
+maintainers = [{ name = "hong.zhang", email = "hong.zhang@bst.ai" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests>=2.25.1",
+    "python-dateutil>=2.8.1",
+    "graphviz>=0.19.1",
+    "pyyaml>=5.4",
+    "pycryptodome>=3.10",
+    "pandas>=2.0.0",
+    "openpyxl>=3.0.0",
+    "httpx>=0.28.1",
+    "agno[mcp]>=1.5.1",
+    "mcp>=1.9.0",
+    "openai>=1.79.0",
+    "loguru>=0.7.2",
+    "Flask>=2.0.0",
+    "redis>=4.3.4",
+    "reportlab",
+    "python-dotenv>=0.19.0",
+]
+requires-python = ">=3.12"
+
+[tool.setuptools]
+packages = ["bst_mcp_server"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"bst_mcp_server" = ["config/*"]
+
+[project.scripts]
+bst_mcp_server = "bst_mcp_server.bst_pm_server:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest",
+    "black",
+    "isort",
+    "mypy",
+]
+

@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+
+    "bst_pm_info": {
+      "name": "bst_pm_info",
+      "type": "streamableHttp",
+      "description": "",
+      "isActive": true,
+      "baseUrl": "http://localhost:8001/mcp"
+    },
+    "echart": {
+      "name": "echat",
+      "type": "sse",
+      "description": "",
+      "isActive": true,
+      "baseUrl": "http://localhost:8989/sse"
+    }
+  }
+}
