@@ -1,0 +1,4 @@
+build/**
+dist/**
+venv/**
+src/bst_mcp_server.egg-info/**

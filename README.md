@@ -180,31 +180,60 @@ twine upload dist/*
 
 
 # 安装依赖
-sudo apt install -y make build-essential libssl-dev zlib1g-dev \
-    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-    libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \
-    liblzma-dev python3-openssl git
+```
+sudo apt update
 
+sudo apt install -y \
+    make \
+    build-essential \
+    libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libffi-dev \
+    libncurses-dev \
+    libncurses5-dev \
+    libncursesw5-dev \
+    libnsl-dev \
+    libdb-dev \
+    tk-dev \
+    libgdbm-dev \
+    liblzma-dev \
+    uuid-dev \
+    libexpat1-dev \
+    xz-utils \
+    wget \
+    curl \
+    llvm \
+    python3-openssl \
+    git
+```
 # 安装 pyenv
+```
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-
+```
 # 配置环境变量（添加到 .bashrc 或 .zshrc）
+```
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-
+```
 # 重新加载配置
+```
 source ~/.bashrc
-
+```
 # 安装 Python 3.12
+```
 pyenv install 3.12.3
-
+```
 # 设置全局版本
+```
 pyenv global 3.12.3
+```
 
 
-非常好的问题！`pyenv` 和 `.venv` 是 Python 开发中两个非常重要的工具，它们**功能不同、作用层级也不同**。下面我来详细解释它们的区别和联系：
 
 ---
 
